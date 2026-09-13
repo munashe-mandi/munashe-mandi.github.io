@@ -61,13 +61,10 @@ export default function Home() {
         </h2>
         <div className="space-y-12">
           {featuredProjects.map((project) => (
-            <div key={project.id}>
+            <div key={project.slug}>
               <h3 className="text-xl font-semibold text-black dark:text-zinc-50">
                 {project.title}
               </h3>
-              <p className="text-zinc-600 dark:text-zinc-400 text-sm mb-2">
-                {project.headline}
-              </p>
               <p className="text-zinc-700 dark:text-zinc-300 mb-4">
                 {project.shortDescription}
               </p>
@@ -81,12 +78,12 @@ export default function Home() {
                   </span>
                 ))}
               </div>
-              {project.githubUrl && (
+              {(project.repoUrl || project.liveUrl) && (
                 <a
-                  href={project.githubUrl}
+                  href={project.repoUrl ?? project.liveUrl}
                   className="text-sm underline underline-offset-4"
                 >
-                  View on GitHub
+                  {project.repoUrl ? "View repository" : "View live project"}
                 </a>
               )}
             </div>
