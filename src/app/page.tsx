@@ -2,6 +2,7 @@ import { siteConfig } from "@/content/site-config";
 import { projects } from "@/content/projects";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { ProjectCard } from "@/components/ProjectCard";
 
 export default function Home() {
   const featuredProjects = projects.filter((p) => p.featured);
@@ -83,35 +84,7 @@ export default function Home() {
         </h2>
         <div className="space-y-12">
           {featuredProjects.map((project) => (
-            <div key={project.slug}>
-              <span className="text-xs font-medium text-zinc-500">
-                {project.status}
-              </span>
-              <h3 className="text-xl font-semibold text-black dark:text-zinc-50">
-                {project.title}
-              </h3>
-              <p className="text-zinc-700 dark:text-zinc-300 mb-4">
-                {project.shortDescription}
-              </p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.technologies.map((tech) => (
-                  <span
-                    key={tech}
-                    className="text-xs px-2 py-1 bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              {(project.repoUrl || project.liveUrl) && (
-                <a
-                  href={project.repoUrl ?? project.liveUrl}
-                  className="text-sm underline underline-offset-4"
-                >
-                  {project.repoUrl ? "View repository" : "View live project"}
-                </a>
-              )}
-            </div>
+            <ProjectCard key={project.slug} project={project} />
           ))}
         </div>
       </section>
