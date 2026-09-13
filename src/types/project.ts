@@ -12,9 +12,9 @@ export interface Project {
     context: string;
     solution: string;
     keyFeatures: string[];
-    architecture: string;
-    engineeringChallenges: string[];
-    technicalDecisions: { decision: string; reasoning: string }[];
+    architecture?: string;
+    engineeringChallenges?: string[];
+    technicalDecisions?: { decision: string; reasoning: string }[];
     results: string;
   };
 }
